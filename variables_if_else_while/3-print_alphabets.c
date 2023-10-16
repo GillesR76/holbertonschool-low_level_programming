@@ -9,13 +9,13 @@
 
 int main(void)
 {
-        char alphabet1 = 'a';
+	char alphabet1 = 'a';
 	char alphabet2 = 'A';
 
-        while (alphabet1 <= 'z')
+	while (alphabet1 <= 'z')
 {
-        putchar(alphabet1);
-        alphabet1++;
+	putchar(alphabet1);
+	alphabet1++;
 }
 
 	while (alphabet2 <= 'Z')
@@ -23,7 +23,7 @@ int main(void)
 	putchar(alphabet2);
 	alphabet2++;
 }
-        putchar('\n');
+	putchar('\n');
 
-        return (0);
+	return (0);
 }
