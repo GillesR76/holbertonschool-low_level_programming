@@ -2,8 +2,8 @@
 
 /**
  * add - add tow integers and return the result
- * @int x: integers x 
- * @int y: integer y
+ * @x: integers x 
+ * @y: integer y
  * Return: result
  */
 
