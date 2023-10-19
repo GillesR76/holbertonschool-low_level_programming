@@ -2,7 +2,7 @@
 
 /**
  * add - add tow integers and return the result
- * @int, int: two integers
+ * @int x, int y: integers x and y
  *
  * Return: result
  */
