@@ -2,7 +2,7 @@
 
 /**
  * add - add tow integers and return the result
- * @x: integers x 
+ * @x: integers x
  * @y: integer y
  * Return: result
  */
