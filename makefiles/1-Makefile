@@ -1,0 +1,4 @@
+all: school
+
+CC = gcc
+src = main.c school.c 
