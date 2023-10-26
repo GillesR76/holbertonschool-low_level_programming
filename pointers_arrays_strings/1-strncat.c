@@ -11,7 +11,6 @@
 
 char *_strncat(char *dest, char *src, int n)
 {
-	char *final_dest = dest;
 	int x = 0;
 
 	while (*dest != '\0')
@@ -28,5 +27,5 @@ char *_strncat(char *dest, char *src, int n)
 	}
 	*dest = '\0';
 
-	return (final_dest);
+	return (dest);
 }
