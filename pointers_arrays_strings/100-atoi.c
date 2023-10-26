@@ -21,19 +21,18 @@ int _atoi(char *s)
 		else if (s[x] == '-')
 		{
 			moins *= -1;
-			x++;
 		}
 		x++;
 	}
 	while (s[x] >= '0' && s[x] <= '9')
 	{
 		result = (result * 10) + (s[x] - '0');
+		x++;
 		if (s[x] < '0' || s[x] > '9')
 		{
 			result *= moins;
 			return (result);
 		}
-		x++;
 	}
 	return (result);
 }
