@@ -3,15 +3,14 @@
 /**
  * print_chessboard - function that prints the chessboard
  * @a: char
- * @8: number of columns
  *
  * Return: void
  */
 
 void print_chessboard(char (*a)[8])
 {
-	int i;
-	int j;
+	int i = 0;
+	int j = 0;
 
 	for (i = 0; i < 8; i++)
 	{
