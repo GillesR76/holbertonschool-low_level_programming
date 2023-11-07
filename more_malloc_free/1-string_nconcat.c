@@ -11,9 +11,7 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j;
-	unsigned int len1 = 0;
-	unsigned int len2 = 0;
+	unsigned int i, j, len1 = 0, len2 = 0;
 	char *duplicate = NULL;
 
 	if (s1 == NULL)
@@ -41,12 +39,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		duplicate[i] = s1[i];
 	}
+
+	if (n >= len2)
+		n = len2;
+
 	for (j = 0; j < n; j++)
 	{
-		if (n >= len2)
-		{
-			n = len2;
-		}
 		duplicate[i + j] = s2[j];
 	}
 	duplicate[i + j] = '\0';
