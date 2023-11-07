@@ -43,15 +43,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	for (j = 0; j < n; j++)
 	{
+		if (n >= len2)
+		{
+			n = len2;
+		}
 		duplicate[i + j] = s2[j];
-	}
-	if (n >= len2)
-	{
-		duplicate[i + j] = s2[j];
-		j++;
 	}
 	duplicate[i + j] = '\0';
-
 	return (duplicate);
 }
 
