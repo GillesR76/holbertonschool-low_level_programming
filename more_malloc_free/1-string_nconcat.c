@@ -28,7 +28,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		len2++;
 	}
 
-	duplicate = malloc((len1 + len2) * sizeof(char) + sizeof(char));
+	duplicate = malloc((len1 + n) * sizeof(char) + sizeof(char));
 
 	if (duplicate == NULL)
 	{
