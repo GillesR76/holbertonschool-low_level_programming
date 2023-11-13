@@ -1,40 +1,6 @@
 #include "dog.h"
 
 /**
- * _strdup - function that returns a pointer to a new space in memory
- * @str: string
- *
- * Return: pointer to the duplicted string
- */
-
-char *_strdup(char *str);
-
-char *_strdup(char *str)
-{
-	char *copy = NULL;
-	int i;
-	int len = 0;
-
-	if (str == NULL)
-		return (NULL);
-
-	while (str[len] != '\0')
-		len++;
-
-	copy = malloc(len * sizeof(char) + sizeof(char));
-
-	if (copy == NULL)
-		exit(1);
-
-	for (i = 0; i < len; i++)
-	{
-		copy[i] = str[i];
-	}
-
-	return (copy);
-}
-
-/**
  * new_dog - function that creates a new dog
  * @name: first member
  * @age: second member
@@ -45,13 +11,20 @@ char *_strdup(char *str)
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	int i, len1 = 0, len2 = 0;
+	dog_t *new_dog = NULL;
 
-	dog_t *new_dog = malloc(sizeof(dog_t));
+	while (name[len1] != '\0')
+		len1++;
+	while (owner[len2] != '\0')
+		len2++;
+
+	new_dog = malloc(sizeof(dog_t));
 
 	if (new_dog == NULL)
 		return (NULL);
 
-	new_dog->name = _strdup(name);
+	new_dog->name = malloc(len1 * sizeof(char));
 
 	if (new_dog->name == NULL)
 	{
@@ -59,9 +32,13 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	new_dog->age = age;
+	for (i = 0; i < len1; i++)
+	{
+		new_dog->name[i] = name[i];
+	}
 
-	new_dog->owner = _strdup(owner);
+	new_dog->age = age;
+	new_dog->owner = malloc(len2 * sizeof(char));
 
 	if (new_dog->owner == NULL)
 	{
@@ -70,5 +47,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
+	for (i = 0; i < len2; i++)
+	{
+		new_dog->owner[i] = owner[i];
+	}
 	return (new_dog);
 }
