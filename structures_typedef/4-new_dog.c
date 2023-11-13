@@ -1,5 +1,27 @@
 #include "dog.h"
 
+char *_memcpy(char *dest, char *src, unsigned int n);
+
+/**
+ * _memcpy - function that copies memory area
+ * @dest: destination char string
+ * @src: source char string
+ * @n: unsigned integer
+ *
+ * Return: dest
+ */
+
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	for (i = 0; i < n; i++)
+	{
+		dest[i] = src[i];
+	}
+	return (dest);
+}
+
 /**
  * new_dog - function that creates a new dog
  * @name: first member
@@ -11,7 +33,7 @@
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int i, len1 = 0, len2 = 0;
+	int len1 = 0, len2 = 0;
 	dog_t *new_dog = NULL;
 
 	while (name[len1] != '\0')
@@ -31,11 +53,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(new_dog);
 		return (NULL);
 	}
-
-	for (i = 0; i < len1; i++)
-	{
-		new_dog->name[i] = name[i];
-	}
+	_memcpy(new_dog->name, name, len1);
+	new_dog->name[len1] = '\0';
 
 	new_dog->age = age;
 	new_dog->owner = malloc((len2 + 1) * sizeof(char));
@@ -46,10 +65,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(new_dog);
 		return (NULL);
 	}
+	_memcpy(new_dog->owner, owner, len2);
+	new_dog->owner[len2] = '\0';
 
-	for (i = 0; i < len2; i++)
-	{
-		new_dog->owner[i] = owner[i];
-	}
 	return (new_dog);
 }
