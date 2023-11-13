@@ -8,39 +8,57 @@
  *
  * Return: return null if the function fails
  */
+char *_strdup(char *str)
+{
+	char *copy = NULL;
+	int i;
+	int len = 0;
+
+	if (str == NULL)
+		return (NULL);
+
+	while (str[len] != '\0')
+		len++;
+
+	copy = malloc(len * sizeof(char) + sizeof(char));
+
+	if (copy == NULL)
+		exit(1);
+
+	for (i = 0; i < len; i++)
+	{
+		copy[i] = str[i];
+	}
+
+	return (copy);
+}
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog = NULL;
-	int len1 = 0, len2 = 0;
 
-	while (name[len1] != '\0')
-		len1++;
-	while (owner[len2] != '\0')
-		len2++;
+	dog_t *ptr = malloc(sizeof(dog_t));
 
-	new_dog = malloc(sizeof(dog_t));
-
-	if (new_dog == NULL)
+	if (ptr == NULL)
 		return (NULL);
 
-	new_dog->name = malloc(len1 * sizeof(char) + sizeof(char));
-	
-	if (new_dog->name == NULL)
+	ptr->name = _strdup(name);
+
+	if (ptr->name == NULL)
 	{
-		free(new_dog->name);
+		free(ptr);
 		return (NULL);
 	}
-	new_dog->age = age;
-	
-	new_dog->owner = malloc(len2 * sizeof(char) + sizeof(char));
-	
-	if (new_dog->owner == NULL)
+
+	ptr->age = age;
+
+	ptr->owner = _strdup(owner);
+
+	if (ptr->owner == NULL)
 	{
-		free(new_dog->owner);
+		free(ptr->name);
+		free(ptr);
 		return (NULL);
 	}
-	free(new_dog);
 
-	return (new_dog);
+	return (ptr);
 }
