@@ -1,13 +1,14 @@
 #include "dog.h"
 
 /**
- * new_dog - function that creates a new dog
- * @name: first member
- * @age: second member
- * @owner: third member
+ * _strdup - function that returns a pointer to a new space in memory
+ * @str: string
  *
- * Return: return null if the function fails
+ * Return: pointer to the duplicted string
  */
+
+char *_strdup(char *str);
+
 char *_strdup(char *str)
 {
 	char *copy = NULL;
@@ -32,6 +33,15 @@ char *_strdup(char *str)
 
 	return (copy);
 }
+
+/**
+ * new_dog - function that creates a new dog
+ * @name: first member
+ * @age: second member
+ * @owner: third member
+ *
+ * Return: return null if the function fails
+ */
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
