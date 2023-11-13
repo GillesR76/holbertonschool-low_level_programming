@@ -2,14 +2,15 @@
 #define DOG_H
 
 /**
- * struct _dog - Structure named dog
+ * struct dog - Structure named dog
  * @name: First member
  * @age: Second member
  * @owner: Second member
  *
  */
 
-struct dog {
+struct dog
+{
 	char *name;
 	float age;
 	char *owner;
