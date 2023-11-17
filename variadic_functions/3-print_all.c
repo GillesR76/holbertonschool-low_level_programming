@@ -1,0 +1,111 @@
+#include "variadic_functions.h"
+#include <stdarg.h>
+
+/**
+ * print_char - function to print a char
+ * @list: list of arguments to print from
+ *
+ * Return: void
+ */
+
+void print_char(va_list list)
+{
+	printf("%c", (char) va_arg(list, int));
+}
+
+/**
+ * print_int - function to print an int
+ * @list: list of arguments to print from
+ *
+ * Return: void
+ */
+
+void print_int(va_list list)
+{
+	printf("%d", va_arg(list, int));
+}
+
+/**
+ * print_float - function to print a float
+ * @list: list of arguments to print from
+ *
+ * Return: void
+ */
+
+void print_float(va_list list)
+{
+	printf("%f", (float) va_arg(list, double));
+}
+
+/**
+ * print_str - function to print a string
+ * @list: list of arguments to print from
+ *
+ * Return: void
+ */
+
+void print_str(va_list list)
+{
+	char *str = va_arg(list, char*);
+
+	if (str != NULL)
+	{
+		printf("%s", str);
+	}
+	else
+	{
+		printf("(nil)");
+	}
+}
+
+
+/**
+ * print_all - function that prints anything
+ * @format: argument
+ *
+ * Return: void
+ */
+
+void print_all(const char * const format, ...)
+{
+	const char *ptr = NULL;
+	va_list list;
+	int i = 0;
+	int printed = 0;
+
+	print tab[4] = {
+	{"c", print_char},
+	{"i", print_int},
+	{"f", print_float},
+	{"s", print_str}
+	};
+
+	ptr = format;
+
+	va_start(list, format);
+
+	while (format != NULL && *ptr)
+	{
+		i = 0;
+		while (i < 4)
+		{
+			if (*tab[i].caract == *ptr)
+			{
+				if (printed > 0)
+				{
+					printf(", ");
+				}
+				tab[i].f(list);
+				printed++;
+				break;
+			}
+		i++;
+		}
+	ptr++;
+	}
+
+	va_end(list);
+	printf("\n");
+
+}
+
