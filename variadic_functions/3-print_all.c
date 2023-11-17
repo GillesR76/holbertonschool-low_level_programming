@@ -22,7 +22,7 @@ void print_char(va_list list)
 
 void print_int(va_list list)
 {
-	printf("%d, ", va_arg(list, int));
+	printf("%d", va_arg(list, int));
 }
 
 /**
@@ -50,11 +50,7 @@ void print_str(va_list list)
 
 	if (str != NULL)
 	{
-		printf("%s", str);
-	}
-	else
-	{
-		printf("(nil)");
+		printf("%s, ", str);
 	}
 }
 
