@@ -68,7 +68,7 @@ void print_all(const char * const format, ...)
 	va_list list;
 	int i = 0;
 	int j = 0;
-	int printed = 0;
+	const char *separator = "";
 
 	print tab[5] = {
 	{"c", print_char},
@@ -87,13 +87,9 @@ void print_all(const char * const format, ...)
 		{
 			if (*tab[i].caract == format[j])
 			{
-				if (printed > 0)
-				{	
-					printf(", ");
-				}
-
+				printf("%s", separator);
 				tab[i].f(list);
-				printed++;
+				separator = ", ";
 				break;
 			}
 			i++;
