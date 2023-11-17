@@ -48,10 +48,11 @@ void print_str(va_list list)
 {
 	char *str = va_arg(list, char*);
 
-	if (str != NULL)
+	if (str == NULL)
 	{
-		printf("%s", str);
+		printf("nil");
 	}
+	printf("%s", str);
 }
 
 
