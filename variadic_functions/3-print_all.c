@@ -88,7 +88,9 @@ void print_all(const char * const format, ...)
 			if (*tab[i].caract == format[j])
 			{
 				if (printed > 0)
+				{	
 					printf(", ");
+				}
 
 				tab[i].f(list);
 				printed++;
