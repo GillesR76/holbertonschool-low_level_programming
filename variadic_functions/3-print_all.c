@@ -22,7 +22,7 @@ void print_char(va_list list)
 
 void print_int(va_list list)
 {
-	printf("%d", va_arg(list, int));
+	printf("%d, ", va_arg(list, int));
 }
 
 /**
@@ -50,7 +50,7 @@ void print_str(va_list list)
 
 	if (str != NULL)
 	{
-		printf("%s, ", str);
+		printf("%s", str);
 	}
 }
 
@@ -64,34 +64,33 @@ void print_str(va_list list)
 
 void print_all(const char * const format, ...)
 {
-	const char *ptr = NULL;
 	va_list list;
 	int i = 0;
+	int j = 0;
 
-	print tab[4] = {
+	print tab[5] = {
 	{"c", print_char},
 	{"i", print_int},
 	{"f", print_float},
-	{"s", print_str}
+	{"s", print_str},
+	{NULL, NULL}
 	};
-
-	ptr = format;
 
 	va_start(list, format);
 
-	while (format != NULL && *ptr)
+	while (format[j])
 	{
 		i = 0;
 		while (i < 4)
 		{
-			if (*tab[i].caract == *ptr)
+			if (*tab[i].caract == format[j])
 			{
 				tab[i].f(list);
 				break;
 			}
 			i++;
 		}
-		ptr++;
+		j++;
 	}
 
 	va_end(list);
