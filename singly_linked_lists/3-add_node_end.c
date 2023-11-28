@@ -18,6 +18,13 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL);
 
 	endnode->str = strdup(str);
+
+	if (endnode->str == NULL)
+	{
+		free(endnode);
+		return (NULL);
+	}
+
 	endnode->len = strlen(str);
 
 	temp = *head;
